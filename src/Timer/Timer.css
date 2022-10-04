@@ -1,0 +1,83 @@
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
+.timer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  width: 70%;
+  
+  
+}
+
+
+
+.minutes, .seconds, .hours{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex:1;
+  font-size: 35px;
+  row-gap: 20px;
+}
+
+.hours-numbers, .seconds-numbers, .minutes-numbers{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: rgb(86, 86, 86);
+}
+
+.title{
+  margin-top: 100px;
+  font-size: 32px;
+  font-family: Rubik Dirt;
+  color: rgb(9, 161, 103);
+}
+
+.hours-title, .minutes-title, .seconds-title{
+  font-size: 30px;
+  color: rgb(18, 95, 131);
+  font-weight: 500;
+  font-family: Montserrat;
+}
+
+.hour-1,  .minute-1,  .second-1 {
+  border: 1px solid rgb(222, 222, 222);
+  padding : 5px 15px;
+  margin-right: 15px;
+}
+
+.hour-2, .minute-2, .second-2{
+  border: 1px solid rgb(222, 222, 222);
+  padding : 5px 15px;
+  
+}
+
+.finished{
+  margin-top: 75px;
+  font-size: 32px;
+  font-family: Rubik Dirt;
+  color: rgb(227, 41, 17);
+  display: block;
+}
+
+
+.not-finished{
+  display: none;
+}
+
+
+.red-digit{
+  color: rgb(227, 41, 17);
+  font-weight: bold;
+}
