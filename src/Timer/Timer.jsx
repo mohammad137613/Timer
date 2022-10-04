@@ -6,11 +6,14 @@ const Timer = () =>{
 
   const finishedElement = useRef();
 
+  const [stopped, setStopped] = useState(false)
+  const [timeOutId, setTimeOutId] = useState()
+
   const [hour1, setHour1] = useState(0)
   const [hour2, setHour2] = useState(0)
 
-  const [minute1, setMinute1] = useState(0)
-  const [minute2, setMinute2] = useState(1)
+  const [minute1, setMinute1] = useState(5)
+  const [minute2, setMinute2] = useState(0)
 
   const [second1, setSecond1] = useState(1)
   const [second2, setSecond2] = useState(0)
@@ -18,18 +21,30 @@ const Timer = () =>{
   const [count, setCount] = useState(0)
   const [finished, setFinished] = useState(false)
 
+  
   useEffect(()=>{
-    setTimeout(()=>{
-      if(second2 === 0){
-        if (second1 === 0){
-          if(minute2 === 0){
-            if(minute1 === 0){
-              if(hour2 === 0){
-                if(hour1 === 0){
-                  setFinished(true)
+    
+    if(!stopped){
+      let i = setTimeout(()=>{
+        
+        if(second2 === 0){
+          if (second1 === 0){
+            if(minute2 === 0){
+              if(minute1 === 0){
+                if(hour2 === 0){
+                  if(hour1 === 0){
+                    setFinished(true)
+                  }
+                  else{
+                    setHour1(hour1-1)
+                    setMinute2(9)
+                    setSecond2(9)
+                    setMinute1(5)
+                    setSecond1(5)
+                  }
                 }
                 else{
-                  setHour1(hour1-1)
+                  setHour2(hour2-1)
                   setMinute2(9)
                   setSecond2(9)
                   setMinute1(5)
@@ -37,40 +52,39 @@ const Timer = () =>{
                 }
               }
               else{
-                setHour2(hour2-1)
                 setMinute2(9)
                 setSecond2(9)
-                setMinute1(5)
+                setMinute1(minute1-1)
                 setSecond1(5)
               }
             }
             else{
-              setMinute2(9)
+              setMinute2(minute2-1)
               setSecond2(9)
-              setMinute1(minute1-1)
               setSecond1(5)
             }
+         
           }
           else{
-            setMinute2(minute2-1)
             setSecond2(9)
-            setSecond1(5)
+            setSecond1(second1-1)
           }
-       
+  
+          
         }
         else{
-          setSecond2(9)
-          setSecond1(second1-1)
+          setSecond2(second2-1)
         }
-
         
-      }
-      else{
-        setSecond2(second2-1)
-      }
+        setCount(count+1)
+      }, 1000)
 
-      setCount(count+1)
-    }, 1000)
+    setTimeOutId(i)
+    }
+    else{
+      clearTimeout(timeOutId)
+    }
+    
   }, [count])
 
   useEffect(()=>{
@@ -80,11 +94,17 @@ const Timer = () =>{
     
   }, [finished])
 
+  const handleStop = ()=>{
+    setStopped(!stopped)
+    setCount(count+1)
+  }
   return(
     <div className='container'>
+      
       <div className="title">
-        Developed By Muhammad Abdinian
+        My Timer
       </div>
+
       <div className='timer'>
         <div className="hours">
           <div className="hours-title">hours</div>
@@ -112,8 +132,23 @@ const Timer = () =>{
 
       </div>
 
+      <div  className='reset-stop'>
+        <div className='reset-div'>
+        <button>Reset</button>
+        </div>
+
+        <div className='stop-div'>
+        <button onClick={handleStop}>{stopped? 'Resume':'Stop'}</button>
+        </div>
+        
+      </div>
+
       <div ref={finishedElement} className='not-finished'>
         Time Has Finished!
+      </div>
+
+      <div className="footer">
+        Developed By Muhammad Abdinian
       </div>
     </div>
   )

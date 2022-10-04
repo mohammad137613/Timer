@@ -11,9 +11,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 90px;
-  width: 70%;
-  
+  margin-top: 70px;
+  width: 500px;
+  column-gap: 75px;
   
 }
 
@@ -24,7 +24,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex:1;
   font-size: 35px;
   row-gap: 20px;
 }
@@ -34,31 +33,39 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: rgb(86, 86, 86);
+  color: #535c68;
 }
 
+
 .title{
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #ff7979;
+}
+.footer{
   margin-top: 100px;
-  font-size: 32px;
-  font-family: Rubik Dirt;
-  color: rgb(9, 161, 103);
+  font-size: 20px;
+  font-family: Montserrat;
+  color: rgb(189, 189, 189);
 }
 
 .hours-title, .minutes-title, .seconds-title{
   font-size: 30px;
-  color: rgb(18, 95, 131);
+  color: #130f40;
   font-weight: 500;
   font-family: Montserrat;
 }
 
 .hour-1,  .minute-1,  .second-1 {
-  border: 1px solid rgb(222, 222, 222);
+  border: 1px solid #dff9fb;
   padding : 5px 15px;
   margin-right: 15px;
 }
 
 .hour-2, .minute-2, .second-2{
-  border: 1px solid rgb(222, 222, 222);
+  border: 1px solid #dff9fb;
   padding : 5px 15px;
   
 }
@@ -67,7 +74,7 @@
   margin-top: 75px;
   font-size: 32px;
   font-family: Rubik Dirt;
-  color: rgb(227, 41, 17);
+  color: #ff7979;
   display: block;
 }
 
@@ -78,6 +85,146 @@
 
 
 .red-digit{
-  color: rgb(227, 41, 17);
+  color: #ff7979;
   font-weight: bold;
+}
+
+.reset-stop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:70px;
+  column-gap: 150px;
+  
+}
+
+.reset-div button, .stop-div button{
+  color:white;
+  font-weight: bold;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  font-family: Montserrat;
+  font-size: 16px;
+  border-radius: 2.5px;
+  
+}
+
+.stop-div button{
+  background-color: #ff7979;
+ 
+}
+
+.reset-div button{
+  background-color: #22a6b3;
+ 
+}
+
+.stop-div button:hover{
+  background-color: #ff7979d7;
+ 
+}
+
+.reset-div button:hover{
+  background-color: #22a7b3cc;
+ 
+}
+
+@media(max-width:670px){
+  .timer{
+    width: 100%;
+    column-gap: 80px;
+  }
+
+  .reset-stop{
+    margin-top:50px;
+    column-gap: 110px;
+    
+  }
+
+  
+  .hours-title, .minutes-title, .seconds-title{
+    font-size: 25px;
+    color: #130f40;
+    font-weight: 500;
+    font-family: Montserrat;
+  }
+  
+  .hour-1,  .minute-1,  .second-1 {
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    margin-right: 10px;
+  }
+  
+  .hour-2, .minute-2, .second-2{
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    
+  }
+}
+
+
+
+@media(max-width:530px){
+  .timer{
+    width: 100%;
+    column-gap: 70px;
+  }
+
+  .reset-stop{
+    margin-top:50px;
+    column-gap: 100px;
+    
+  }
+
+  
+  .hours-title, .minutes-title, .seconds-title{
+    font-size: 23px;
+    color: #130f40;
+    font-weight: 500;
+    font-family: Montserrat;
+  }
+  
+  .hour-1,  .minute-1,  .second-1 {
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    margin-right: 10px;
+  }
+  
+  .hour-2, .minute-2, .second-2{
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    
+  }
+}
+
+@media(max-width:450px){
+  .reset-stop{
+    margin-top:50px;
+    column-gap: 75px;
+    
+  }
+  .timer{
+    width: 100%;
+    column-gap: 45px;
+  }
+
+  .hours-title, .minutes-title, .seconds-title{
+    font-size: 20px;
+    color: #130f40;
+    font-weight: 500;
+    font-family: Montserrat;
+  }
+  
+  .hour-1,  .minute-1,  .second-1 {
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    margin-right: 10px;
+  }
+  
+  .hour-2, .minute-2, .second-2{
+    border: 1px solid #dff9fb;
+    padding : 5px 10px;
+    
+  }
 }
