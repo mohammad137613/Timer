@@ -228,3 +228,43 @@
     
   }
 }
+
+
+
+@media(max-width:400px){
+  .reset-stop{
+    margin-top:50px;
+    column-gap: 65px;
+    
+  }
+  .timer{
+    width: 100%;
+    column-gap: 25px;
+  }
+
+  .hours-title, .minutes-title, .seconds-title{
+    font-size: 18px;
+    color: #130f40;
+    font-weight: 500;
+    font-family: Montserrat;
+  }
+  
+ 
+  
+
+  .footer{
+    font-size: 17px;
+  }
+
+  .reset-div button, .stop-div button{
+    color:white;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Montserrat;
+    font-size: 16px;
+    border-radius: 2.5px;
+    
+  }
+}
