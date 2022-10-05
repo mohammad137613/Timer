@@ -1,155 +1,89 @@
 import './Timer.css'
 import React from 'react'
 import { useEffect, useState, useRef } from 'react'
+import MyTimer from '../MyTimer/MyTimer'
+import SetTimer from '../SetTimer/SetTimer'
+import Footer from '../Footer/Footer'
+import ResetStop from '../ResetStop/ResetStop'
+import Header from '../Header/Header'
+
 
 const Timer = () =>{
-
-  const finishedElement = useRef();
-
-  const [stopped, setStopped] = useState(false)
-  const [timeOutId, setTimeOutId] = useState()
 
   const [hour1, setHour1] = useState(0)
   const [hour2, setHour2] = useState(0)
 
-  const [minute1, setMinute1] = useState(5)
+  const [minute1, setMinute1] = useState(0)
   const [minute2, setMinute2] = useState(0)
 
-  const [second1, setSecond1] = useState(1)
+  const [second1, setSecond1] = useState(0)
   const [second2, setSecond2] = useState(0)
 
-  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(false)
+
+  const [stopped, setStopped] = useState(false)
+
   const [finished, setFinished] = useState(false)
 
-  
-  useEffect(()=>{
-    
-    if(!stopped){
-      let i = setTimeout(()=>{
-        
-        if(second2 === 0){
-          if (second1 === 0){
-            if(minute2 === 0){
-              if(minute1 === 0){
-                if(hour2 === 0){
-                  if(hour1 === 0){
-                    setFinished(true)
-                  }
-                  else{
-                    setHour1(hour1-1)
-                    setMinute2(9)
-                    setSecond2(9)
-                    setMinute1(5)
-                    setSecond1(5)
-                  }
-                }
-                else{
-                  setHour2(hour2-1)
-                  setMinute2(9)
-                  setSecond2(9)
-                  setMinute1(5)
-                  setSecond1(5)
-                }
-              }
-              else{
-                setMinute2(9)
-                setSecond2(9)
-                setMinute1(minute1-1)
-                setSecond1(5)
-              }
-            }
-            else{
-              setMinute2(minute2-1)
-              setSecond2(9)
-              setSecond1(5)
-            }
-         
-          }
-          else{
-            setSecond2(9)
-            setSecond1(second1-1)
-          }
-  
-          
-        }
-        else{
-          setSecond2(second2-1)
-        }
-        
-        setCount(count+1)
-      }, 1000)
+  const [min1Input, setMin1Input]=useState(0)
+  const [min2Input, setMin2Input]=useState(0)
+  const [sec1Input, setSec1Input]=useState(0)
+  const [sec2Input, setSec2Input]=useState(0)
+  const [hour1Input, setHour1Input]=useState(0)
+  const [hour2Input, setHour2Input]=useState(0)
 
-    setTimeOutId(i)
-    }
-    else{
-      clearTimeout(timeOutId)
-    }
-    
-  }, [count])
-
-  useEffect(()=>{
-    if (finished){
-      finishedElement.current.className='finished'
-    }
-    
-  }, [finished])
 
   const handleStop = ()=>{
     setStopped(!stopped)
-    setCount(count+1)
   }
+
+  
+
+  const handleStart = ()=>{
+    if(hour1Input !== null){setHour1(hour1Input)} 
+    if(hour2Input !== null){setHour2(hour2Input)} 
+    if(min1Input !== null){setMinute1(min1Input)} 
+    if(min2Input !== null){setMinute2(min2Input)} 
+    if(sec1Input !== null){setSecond1(sec1Input)} 
+    if(sec2Input !== null){setSecond2(sec2Input)} 
+    
+    setStarted(!started)
+  }
+
+ 
+
+  const times = {
+    "setHour1":setHour1,
+    "setHour2":setHour2,
+    "setMinute1":setMinute1,
+    "setMinute2":setMinute2,
+    "setSecond1":setSecond1,
+    "setSecond2":setSecond2,
+    "hour1":hour1,
+    "hour2":hour2,
+    "minute1":minute1,
+    "minute2":minute2,
+    "second1":second1,
+    "second2":second2,
+    "setMin1Input":setMin1Input,
+    "setMin2Input":setMin2Input,
+    "setSec1Input":setSec1Input,
+    "setSec2Input":setSec2Input,
+    "setHour1Input":setHour1Input,
+    "setHour2Input":setHour2Input
+  }
+
   return(
     <div className='container'>
+      <Header finished={finished} started={started}/>
       
-      <div className="title">
-        My Timer
-      </div>
-
-      <div className='timer'>
-        <div className="hours">
-          <div className="hours-title">hours</div>
-          <div className="hours-numbers">
-            <div className={finished?"hour-1 red-digit": "hour-1"}>{hour1}</div>
-            <div className={finished?"hour-2 red-digit": "hour-2"}>{hour2}</div>
-          </div>
-        </div>
-
-        <div className="minutes">
-          <div className="minutes-title">minutes</div>
-          <div className="minutes-numbers">
-            <div className={finished?"minute-1 red-digit": "minute-1"}>{minute1}</div>
-            <div className={finished?"minute-2 red-digit": "minute-2"}>{minute2}</div>
-          </div> 
-        </div>
-
-        <div className="seconds">
-          <div className="seconds-title">seconds</div>
-          <div className="seconds-numbers">
-            <div className={finished?"second-1 red-digit": "second-1"}>{second1}</div>
-            <div className={finished?"second-2 red-digit": "second-2"}>{second2}</div>
-          </div>
-        </div>
-
-      </div>
-
-      <div  className='reset-stop'>
-        <div className='reset-div'>
-        <button>Reset</button>
-        </div>
-
-        <div className='stop-div'>
-        <button onClick={handleStop}>{stopped? 'Resume':'Stop'}</button>
-        </div>
-        
-      </div>
-
-      <div ref={finishedElement} className='not-finished'>
-        Time Has Finished!
-      </div>
-
-      <div className="footer">
-        Developed By Muhammad Abdinian
-      </div>
+      {started? < MyTimer times={times} setFinished={setFinished} stopped={stopped} started={started} finished={finished} /> : 
+      <SetTimer times={times} handleStart={handleStart}/>}
+      
+      <ResetStop started={started} stopped={stopped} handleStop={handleStop} handleStart={handleStart}/>
+      
+      <Footer />
+      
     </div>
   )
 }

@@ -1,0 +1,28 @@
+.title{
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #30336b;
+}
+
+.finished-title{
+  color: #eb4d4b;
+}
+
+
+
+@media(max-width:400px){
+  .title{
+
+    font-size: 20px;
+
+  }
+
+  .finished-title{
+
+    font-size: 20px;
+
+  }
+  
+}

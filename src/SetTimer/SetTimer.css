@@ -1,0 +1,81 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.set-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+}
+
+.setTimer{
+  margin-top: 90px;
+  font-family:Montserrat ;
+  width: 100%;
+}
+
+
+.set-hours-numbers, .set-minutes-numbers, .set-seconds-numbers{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  
+}
+
+.number-input{
+  width:40px;
+  font-size: 25px;
+  text-align: center;
+  border:none;
+  border-bottom:1px solid #95afc0 ;
+}
+
+.number-input:focus {
+  outline: none !important;
+  border-bottom:1px solid #30336b;
+  
+}
+
+.set-hours, .set-minutes ,.set-seconds{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+
+.set-hours-title, .set-minutes-title, .set-seconds-title{
+  font-size: 20px;
+  color: #be2edd;
+  font-weight: 700;
+}
+
+@media(max-width:400px){
+  .set-hours, .set-minutes ,.set-seconds{
+    row-gap: 15px;
+  }
+
+  .set-form{
+    column-gap: 25px;
+  }
+  .set-hours-numbers, .set-minutes-numbers, .set-seconds-numbers{
+    column-gap: 10px; 
+  }
+  .set-hours-title, .set-minutes-title, .set-seconds-title{
+    font-size: 15px;
+  }
+  .number-input{
+    font-size: 23px;
+    width:35px;
+    
+  }
+}
